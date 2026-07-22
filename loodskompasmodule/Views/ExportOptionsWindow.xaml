@@ -1,0 +1,156 @@
+﻿<Window
+    x:Class="LoodsmanKompasExporter.Views.ExportOptionsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Параметры экспорта"
+    Width="560"
+    ResizeMode="NoResize"
+    SizeToContent="Height"
+    WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LoodsmanKompasExporter;component/Themes/MainTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="22" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Style="{StaticResource FieldLabelStyle}"
+            Text="Форматы экспорта" />
+
+        <StackPanel Grid.Row="2">
+
+            <Grid x:Name="Models3DRow" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock VerticalAlignment="Center" Text="Сборки, 3D-модели (.a3d, .m3d)" />
+
+                <ComboBox
+                    x:Name="Models3DFormatComboBox"
+                    Grid.Column="1"
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="Format" />
+            </Grid>
+
+            <Grid x:Name="DrawingsRow" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock VerticalAlignment="Center" Text="Чертежи (.cdw)" />
+
+                <ComboBox
+                    x:Name="DrawingFormatComboBox"
+                    Grid.Column="1"
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="Format" />
+            </Grid>
+
+            <Grid x:Name="FragmentsRow" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock VerticalAlignment="Center" Text="Фрагменты (.frw)" />
+
+                <ComboBox
+                    x:Name="FragmentFormatComboBox"
+                    Grid.Column="1"
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="Format" />
+            </Grid>
+
+            <Grid x:Name="SpecificationsRow" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock VerticalAlignment="Center" Text="Спецификации (.spw)" />
+
+                <ComboBox
+                    x:Name="SpecificationFormatComboBox"
+                    Grid.Column="1"
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="Format" />
+            </Grid>
+            <Grid x:Name="TextRow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock VerticalAlignment="Center" Text="Текстовый документ (.kdw)" />
+
+                <ComboBox
+                    x:Name="TextFormatComboBox"
+                    Grid.Column="1"
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="Format" />
+            </Grid>
+
+        </StackPanel>
+
+        <TextBlock
+            Grid.Row="4"
+            Margin="0,0,0,6"
+            Style="{StaticResource FieldLabelStyle}"
+            Text="Папка назначения" />
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="DirectoryTextBox" IsReadOnly="True" />
+
+            <Button
+                Grid.Column="1"
+                Margin="10,0,0,0"
+                Click="BrowseButton_Click"
+                Content="Обзор..."
+                Style="{StaticResource SecondaryButtonStyle}" />
+        </Grid>
+
+        <StackPanel
+            Grid.Row="8"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <Button
+                Margin="0,0,10,0"
+                Content="Отмена"
+                IsCancel="True"
+                Style="{StaticResource SecondaryButtonStyle}" />
+
+            <Button
+                Click="ExportButton_Click"
+                Content="Экспорт"
+                IsDefault="True"
+                Style="{StaticResource PrimaryButtonStyle}" />
+
+        </StackPanel>
+    </Grid>
+</Window>
