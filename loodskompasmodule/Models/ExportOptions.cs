@@ -1,4 +1,8 @@
-﻿namespace LoodsmanKompasExporter.Models
+﻿
+
+
+
+namespace LoodsmanKompasExporter.Models
 {
     public class ExportOptions
     {

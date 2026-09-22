@@ -73,6 +73,9 @@
     <Compile Include="Services\ExportWorkflowService.cs" />
     <Compile Include="Services\KompasService.cs" />
     <Compile Include="Services\LoodsmanService.cs" />
+    <Compile Include="Views\EasterEgg.xaml.cs">
+      <DependentUpon>EasterEgg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ExportOptionsWindow.xaml.cs">
       <DependentUpon>ExportOptionsWindow.xaml</DependentUpon>
     </Compile>
@@ -156,10 +159,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\EasterEgg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ExportOptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\easteregg.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using LoodsmanKompasExporter.Models;
+using LoodsmanKompasExporter.Services;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
-using LoodsmanKompasExporter.Models;
-using LoodsmanKompasExporter.Services;
+using System.Windows.Input;
 using Forms = System.Windows.Forms;
 
 namespace LoodsmanKompasExporter.Views
@@ -11,13 +12,19 @@ namespace LoodsmanKompasExporter.Views
     {
         public ExportOptions Options { get; private set; }
 
+        private readonly HashSet<Key> _pressedKeys = new HashSet<Key>();
+        private readonly IEnumerable<KompasDocumentType> _types;
+
         public ExportOptionsWindow(IEnumerable<KompasDocumentType> documentTypes)
         {
             InitializeComponent();
-
+            _types = documentTypes;
             var types = new HashSet<KompasDocumentType>(documentTypes);
 
             InitializeFormatRows(types);
+            PreviewKeyDown += Page_PreviewKeyDown;
+            PreviewKeyUp += Page_PreviewKeyUp;
+            Loaded += (_, __) => Keyboard.Focus(this);
         }
 
         private static List<FormatItem> CreateFormatItems(IEnumerable<ExportFormat> formats)
@@ -262,6 +269,33 @@ namespace LoodsmanKompasExporter.Views
             public ExportFormat Format { get; set; }
 
             public string Name { get; set; }
+        }
+        private bool IsKeyComboPressed()
+        {
+            return _pressedKeys.Contains(Key.A)
+                && _pressedKeys.Contains(Key.D)
+                && _pressedKeys.Contains(Key.M)
+                && _pressedKeys.Contains(Key.I)
+                && _pressedKeys.Contains(Key.N);
+        }
+        // обработчик события нажатия на клавишу
+        private void Page_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            _pressedKeys.Add(e.Key); // добавляем клавишу в список нажатых
+
+            if (IsKeyComboPressed()) 
+            { 
+                EasterEgg easter = new EasterEgg(_types);
+                easter.Show();
+                this.Close();
+                e.Handled = true; 
+            }
+        }
+
+        // обработчик события отжатия клавишы
+        private void Page_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            _pressedKeys.Remove(e.Key); 
         }
     }
 }

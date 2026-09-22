@@ -101,7 +101,6 @@ namespace LoodsmanKompasExporter.Services
             var window = new ExportOptionsWindow(documentTypes);
 
             bool? result = window.ShowDialog();
-
             if (result != true)
                 return null;
 

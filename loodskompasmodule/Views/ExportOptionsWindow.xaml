@@ -16,6 +16,7 @@
         </ResourceDictionary>
     </Window.Resources>
 
+    
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,12 +29,11 @@
             <RowDefinition Height="22" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
         <TextBlock
             Grid.Row="0"
             Style="{StaticResource FieldLabelStyle}"
             Text="Форматы экспорта" />
-
+            
         <StackPanel Grid.Row="2">
 
             <Grid x:Name="Models3DRow" Margin="0,0,0,10">

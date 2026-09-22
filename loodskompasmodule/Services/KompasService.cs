@@ -300,7 +300,10 @@ namespace LoodsmanKompasExporter.Services
                     {
                         document.ksCloseDocument();
                     }
-                    catch { }
+                    catch { 
+                        // Ошибка закрытия не должна перекрывать
+                        // основную ошибку экспорта.
+                    }
                 }
             }
         }
@@ -366,6 +369,8 @@ namespace LoodsmanKompasExporter.Services
                     catch
                     {
                         // Игнорируем пока
+                        // Ошибка закрытия не должна перекрывать
+                        // основную ошибку экспорта.
                     }
                 }
             }
@@ -434,7 +439,10 @@ namespace LoodsmanKompasExporter.Services
                     {
                         document.ksCloseDocument();
                     }
-                    catch { }
+                    catch {
+                        // Ошибка закрытия не должна перекрывать
+                        // основную ошибку экспорта.
+                    }
                 }
             }
         }
